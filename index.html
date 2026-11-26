@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For My Little Lily, Ashi ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ min-height:100vh;
+ background:linear-gradient(#100719,#390b20,#120612);
+ color:#fff0f5;
+ font-family:Georgia,serif;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:15px;
+ overflow-x:hidden;
+}
+
+.sky{
+ position:fixed;
+ inset:0;
+ overflow:hidden;
+ pointer-events:none;
+}
+
+.star{
+ position:absolute;
+ color:white;
+ animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+ from{opacity:.2;transform:scale(.7)}
+ to{opacity:1;transform:scale(1.3)}
+}
+
+.moon{
+ position:absolute;
+ top:35px;
+ right:35px;
+ width:75px;
+ height:75px;
+ background:#ffe7c4;
+ border-radius:50%;
+ box-shadow:0 0 35px #ffdba1,0 0 90px #f7b6a5;
+}
+
+.shooting{
+ position:absolute;
+ top:20%;
+ left:-100px;
+ width:100px;
+ height:2px;
+ background:linear-gradient(90deg,transparent,#fff);
+ transform:rotate(-25deg);
+ animation:shoot 7s infinite;
+}
+
+@keyframes shoot{
+ 0%{left:-100px;top:20%;opacity:0}
+ 5%{opacity:1}
+ 20%{left:120%;top:55%;opacity:0}
+ 100%{left:120%;opacity:0}
+}
+
+.card{
+ width:100%;
+ max-width:460px;
+ min-height:680px;
+ position:relative;
+ z-index:2;
+ padding:28px 20px;
+ text-align:center;
+ border:1px solid #e99aaa66;
+ border-radius:28px;
+ background:linear-gradient(145deg,#481328ed,#1b0b20f5);
+ box-shadow:0 0 50px #e84a7040;
+ overflow:hidden;
+}
+
+.page{display:none;animation:appear 1s}
+.page.active{display:block}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+ color:#ffd1dc;
+ font-size:29px;
+ line-height:1.4;
+ text-shadow:0 0 16px #ff7896;
+}
+
+h2{color:#ffc0d0}
+
+p{
+ font-size:15px;
+ line-height:1.9;
+ color:#ffe8ed;
+}
+
+button{
+ border:1px solid #ffb9c9;
+ background:linear-gradient(120deg,#ef456a,#971b43);
+ color:white;
+ border-radius:30px;
+ padding:13px 24px;
+ margin:12px 4px;
+ font-family:Georgia,serif;
+ font-size:14px;
+ cursor:pointer;
+ box-shadow:0 5px 20px #ff365544;
+}
+
+.heart{
+ font-size:45px;
+ display:inline-block;
+ animation:heartBeat 1.3s infinite;
+}
+
+@keyframes heartBeat{
+ 50%{transform:scale(1.25)}
+}
+
+.walk-area{
+ height:200px;
+ position:relative;
+ margin:25px 0;
+ overflow:hidden;
+ border-bottom:2px solid #a85a75;
+}
+
+.walk-cat{
+ position:absolute;
+ left:-140px;
+ bottom:5px;
+ font-size:95px;
+ animation:walk 7s linear infinite;
+ filter:drop-shadow(0 0 15px #ff93ae);
+}
+
+@keyframes walk{
+ 0%{left:-140px;transform:translateY(0)}
+ 15%{transform:translateY(-12px)}
+ 30%{transform:translateY(0)}
+ 50%{transform:translateY(-12px)}
+ 70%{transform:translateY(0)}
+ 100%{left:110%;transform:translateY(-8px)}
+}
+
+.paw{
+ position:absolute;
+ bottom:10px;
+ left:-100px;
+ font-size:23px;
+ opacity:.5;
+ animation:paw 7s linear infinite;
+}
+
+@keyframes paw{
+ to{left:110%;opacity:0}
+}
+
+.flying-heart{
+ font-size:75px;
+ animation:fly 3s infinite ease-in-out;
+ display:inline-block;
+ filter:drop-shadow(0 0 20px #ff496b);
+}
+
+@keyframes fly{
+ 0%,100%{transform:translateY(10px) scale(.9)}
+ 50%{transform:translateY(-25px) scale(1.2)}
+}
+
+.envelope{
+ width:210px;
+ height:140px;
+ margin:50px auto;
+ background:#b9244b;
+ position:relative;
+ border-radius:8px;
+ box-shadow:0 0 30px #ff536b55;
+}
+
+.envelope:before{
+ content:"";
+ position:absolute;
+ top:0;
+ left:0;
+ border-left:105px solid transparent;
+ border-right:105px solid transparent;
+ border-top:90px solid #f36c88;
+ transform-origin:top;
+ animation:open 4s infinite;
+}
+
+@keyframes open{
+ 0%,30%{transform:rotateX(0)}
+ 55%,100%{transform:rotateX(180deg)}
+}
+
+.seal{
+ position:absolute;
+ top:55px;
+ left:83px;
+ font-size:40px;
+ z-index:2;
+}
+
+.garden{
+ display:flex;
+ justify-content:center;
+ gap:18px;
+ margin:35px auto;
+ height:120px;
+ align-items:flex-end;
+}
+
+.flower{
+ font-size:60px;
+ transform:scaleY(.1);
+ transform-origin:bottom;
+ animation:bloom 3s forwards infinite alternate;
+}
+
+.flower:nth-child(2){animation-delay:.5s}
+.flower:nth-child(3){animation-delay:1s}
+
+@keyframes bloom{
+ to{transform:scaleY(1) rotate(8deg)}
+}
+
+.letter{
+ background:#ffffff0b;
+ border:1px solid #f5b2c344;
+ border-radius:18px;
+ padding:17px;
+ text-align:left;
+}
+
+.letter p{font-size:14px}
+
+.petal{
+ position:fixed;
+ top:-30px;
+ z-index:5;
+ pointer-events:none;
+ animation:fall linear forwards;
+}
+
+@keyframes fall{
+ to{transform:translateY(110vh) rotate(500deg);opacity:0}
+}
+
+.music{
+ margin-top:20px;
+ background:#ffffff0c;
+ border:1px solid #f5b2c344;
+ border-radius:16px;
+ padding:12px;
+}
+
+.music iframe{
+ width:100%;
+ height:80px;
+ border:0;
+ border-radius:10px;
+}
+
+.counter{
+ color:#ffc0ce;
+ font-size:11px;
+ margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sky" id="sky">
+ <div class="moon"></div>
+ <div class="shooting"></div>
+</div>
+
+<div class="card">
+
+<div style="font-size:11px;letter-spacing:4px;color:#ffbdcf">
+A STORY MADE FOR ASHI ♡
+</div>
+
+<!-- PAGE 1 -->
+<section class="page active">
+
+<div style="height:100px"></div>
+
+<h1>The Boy Who Sent His Heart To The Moon</h1>
+
+<div class="heart">❤️</div>
+
+<p>
+Once upon a time, there was a boy
+who had something important
+to tell a very special girl.
+</p>
+
+<p>
+He couldn't find the perfect words,
+so he decided to send her
+a little piece of his heart.
+</p>
+
+<div class="envelope">
+<div class="seal">❤️</div>
+</div>
+
+<h2>For My Little Lily, Ashi</h2>
+
+<button onclick="next()">Begin Our Little Story 🌙</button>
+
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+
+<h1>A Little Visitor Is Coming...</h1>
+
+<div class="walk-area">
+<div class="walk-cat">🐈</div>
+<div class="paw">🐾</div>
+</div>
+
+<p>
+Look! A tiny kitty is travelling
+all the way through this little
+night sky.
+</p>
+
+<p>And guess what it's carrying?</p>
+
+<div class="flying-heart">❤️</div>
+
+<h2>A heart for Ashi!</h2>
+
+<button onclick="next()">See What It Brought 💌</button>
+
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+
+<h1>A Message From The Kitty</h1>
+
+<div class="walk-area">
+<div class="walk-cat">🐈‍⬛</div>
+<div class="paw">🐾</div>
+</div>
+
+<h2>Meow, My Ashi!</h2>
+
+<p>
+The little kitty wants to tell you
+that yesterday's misunderstanding
+was never something you should
+keep blaming yourself for.
+</p>
+
+<p>
+You were joking.
+I took things seriously.
+And I misunderstood your intention.
+</p>
+
+<p>I'm sorry for that, my girl. ❤️</p>
+
+<button onclick="next()">Open My Heart 💗</button>
+
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+
+<div class="flying-heart">❤️</div>
+
+<h1>If My Heart Could Speak...</h1>
+
+<div class="letter">
+
+<p>My sweetest Ashi,</p>
+
+<p>
+I wish I had understood your jokes
+the way you intended them.
+Instead, I took them seriously
+and allowed my feelings to take over.
+</p>
+
+<p>
+I'm sorry for misunderstanding you.
+I know you never wanted to hurt me.
+</p>
+
+<p>
+Please don't think you need to
+change your playful nature around me.
+I want your silly jokes,
+your teasing and your laughter.
+</p>
+
+<p>
+I want you to feel comfortable
+being completely yourself.
+</p>
+
+<p>
+I will try to communicate better,
+ask instead of assume,
+and understand you more patiently.
+</p>
+
+<p>
+You don't owe me endless apologies.
+I just want us to understand each other.
+</p>
+
+<p style="text-align:center;color:#ffc1d0">
+With affection,<br>
+<b>Your uv ❤️</b>
+</p>
+
+</div>
+
+<button onclick="next()">A Little Garden For You 🌹</button>
+
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+
+<h1>A Garden That Blooms For You</h1>
+
+<div class="garden">
+<div class="flower">🌹</div>
+<div class="flower">🌷</div>
+<div class="flower">🌹</div>
+</div>
+
+<p>
+If every apology could become a flower,
+I'd plant a whole garden
+just to remind you:
+</p>
+
+<h2>You don't have to feel guilty, Ashi.</h2>
+
+<p>
+One misunderstanding doesn't mean
+we have to lose our smiles.
+</p>
+
+<p>
+We can learn, communicate,
+laugh and understand each other better.
+</p>
+
+<button onclick="next()">One Last Message 🌙</button>
+
+</section>
+
+<!-- PAGE 6 -->
+<section class="page">
+
+<div class="heart">💗</div>
+
+<h1>My Little Lily</h1>
+
+<p>
+I don't want you to think
+that you must be perfect for me.
+</p>
+
+<p>
+I don't want you to be scared
+of joking or expressing yourself.
+</p>
+
+<p>
+I want you to feel comfortable,
+heard and appreciated.
+</p>
+
+<h2>
+You are precious even on
+the days when things go wrong.
+</h2>
+
+<div class="walk-area">
+<div class="walk-cat">🐈</div>
+<div class="paw">🐾</div>
+</div>
+
+<button onclick="next()">The Final Surprise ❤️</button>
+
+</section>
+
+<!-- PAGE 7 -->
+<section class="page">
+
+<div style="font-size:45px">🌹🌙❤️</div>
+
+<h1>And The Story Continues...</h1>
+
+<div class="flying-heart">❤️</div>
+
+<h2>For My Ashi</h2>
+
+<p>
+The boy didn't want a perfect fairytale.
+He just wanted two people
+who could understand each other,
+even when things got confusing.
+</p>
+
+<p>
+So he sent one last message
+to his favourite girl:
+</p>
+
+<p style="font-size:20px;color:#ffd1dc">
+"Please smile, my little lily.
+I am sorry, and I care about you."
+</p>
+
+<div class="garden">
+<div class="flower">🌹</div>
+<div class="flower">🌷</div>
+<div class="flower">🌹</div>
+</div>
+
+<p>
+No pressure, no guilt.
+Just a little love and understanding.
+</p>
+
+<h2>Your uv ❤️</h2>
+
+<button onclick="next()">One Last Thing, My Lily ❤️</button>
+
+</section>
+
+<!-- PAGE 8: NEVER CHANGE FOR ME -->
+<section class="page">
+
+<div class="heart">❤️</div>
+
+<h1>Please Never Change For Me</h1>
+
+<div class="garden">
+<div class="flower">🌹</div>
+<div class="flower">🌷</div>
+<div class="flower">🌹</div>
+</div>
+
+<div class="letter">
+
+<p>My dearest Ashi,</p>
+
+<p>
+Can I tell you one last thing?
+Something I really want you to remember.
+</p>
+
+<p style="font-size:17px;color:#ffd0dc;text-align:center">
+I like you as you are.
+</p>
+
+<p>
+I don't want you to change your personality
+for me. I don't want you to hide your
+playful side, your silly jokes, your
+teasing, your expressions or the little
+things that make you YOU.
+</p>
+
+<p>
+Do you know what made me like you so much?
+It wasn't some perfect version of you.
+It was your personality.
+The way you talk, the way you laugh,
+the way you express yourself,
+your little habits and even
+your stubborn moments.
+</p>
+
+<p>
+Those little things make you the Ashi
+I adore. And I wouldn't want you to
+lose them just to become someone
+you think I would like more.
+</p>
+
+<p>
+You can be silly around me.
+You can tease me, joke with me,
+be dramatic, be stubborn,
+laugh loudly and be completely yourself.
+You never have to pretend to be
+someone else to make me happy.
+</p>
+
+<p>
+Of course, we'll both keep learning
+how to understand each other better.
+But growing together should never mean
+losing the beautiful parts of ourselves.
+</p>
+
+<p>
+So promise me one thing, my little lily:
+never change your personality just
+because you think you have to for me.
+</p>
+
+<p>
+I like you for who you are,
+not for who you could become.
+</p>
+
+<p style="font-size:17px;color:#ffd0dc;text-align:center">
+I don't want a different Ashi.<br>
+I want MY Ashi. ❤️
+</p>
+
+<p style="text-align:center;color:#ffd0dc;font-size:18px">
+Stay yourself, my girl. Always. ❤️
+</p>
+
+<p style="text-align:center">
+With all my heart,<br>
+<b>Your uv ❤️</b>
+</p>
+
+</div>
+
+<div style="font-size:45px;margin-top:25px">
+🌹❤️🌹
+</div>
+
+<h2>
+I wouldn't trade the real you
+for any perfect version.
+</h2>
+
+<p>
+And that's my little promise to you.
+</p>
+
+<button onclick="restart()">Read Our Story Again ♡</button>
+
+</section>
+
+<!-- TAP TO PLAY SONG -->
+<div class="music">
+
+<p style="color:#ffc1d0">🎵 A Thousand Years — For Ashi</p>
+
+<button id="songButton" onclick="toggleSong()">
+♡ Tap To Play Our Song ♡
+</button>
+
+<iframe
+id="songFrame"
+src="https://www.youtube-nocookie.com/embed/NZGHXy1IAHM?rel=0"
+title="A Thousand Years"
+allow="autoplay; encrypted-media; picture-in-picture"
+allowfullscreen
+style="display:none">
+</iframe>
+
+<p style="font-size:11px;color:#eeb4c3">
+A little melody, just for my little lily ♡
+</p>
+
+</div>
+
+<div class="counter" id="counter">
+1 / 8 • A little story by uv ❤️
+</div>
+
+</div>
+
+<script>
+
+let current=0;
+const pages=document.querySelectorAll('.page');
+
+function show(){
+ pages.forEach((p,i)=>{
+ p.classList.toggle('active',i===current);
+ });
+ document.getElementById('counter').innerText=
+ (current+1)+' / '+pages.length+' • A little story by uv ❤️';
+}
+
+function next(){
+ if(current<pages.length-1){
+ current++;
+ show();
+ }
+}
+
+function restart(){
+ current=0;
+ show();
+}
+
+function toggleSong(){
+ const frame=document.getElementById('songFrame');
+ const button=document.getElementById('songButton');
+
+ if(frame.style.display==='none'){
+   frame.style.display='block';
+   frame.src='https://www.youtube-nocookie.com/embed/NZGHXy1IAHM?autoplay=1&rel=0';
+   button.innerHTML='♡ Song Started — Tap To Stop ♡';
+ }else{
+   frame.src='';
+   frame.style.display='none';
+   button.innerHTML='♡ Tap To Play Our Song ♡';
+ }
+}
+
+function makePetal(){
+ const p=document.createElement('div');
+ p.className='petal';
+ p.innerText=['🌹','❤️','🌸','♡','💗'][Math.floor(Math.random()*5)];
+ p.style.left=Math.random()*100+'vw';
+ p.style.fontSize=(13+Math.random()*18)+'px';
+ p.style.animationDuration=(7+Math.random()*8)+'s';
+ document.body.appendChild(p);
+ setTimeout(()=>p.remove(),16000);
+}
+
+function makeStar(){
+ const s=document.createElement('span');
+ s.className='star';
+ s.innerText='✦';
+ s.style.left=Math.random()*100+'%';
+ s.style.top=Math.random()*100+'%';
+ s.style.animationDelay=Math.random()*3+'s';
+ document.getElementById('sky').appendChild(s);
+}
+
+for(let i=0;i<35;i++)makeStar();
+
+setInterval(makePetal,500);
+
+</script>
+
+</body>
+</html>
